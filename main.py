@@ -3,15 +3,12 @@ import numpy as np
 from PIL import Image
 from fastapi import File, UploadFile,  Security, Depends, FastAPI, HTTPException
 from prime import is_prime
-from fastapi.templating import Jinja2Templates
 from fastapi.security.api_key import APIKeyQuery, APIKeyCookie, APIKeyHeader, APIKey
 from starlette.status import HTTP_403_FORBIDDEN
 from starlette.responses import RedirectResponse, StreamingResponse
 from datetime import datetime
 
 app = FastAPI()
-
-templates = Jinja2Templates(directory="templates")
 
 @app.get("/prime/{number}",  tags=["Liczba pierwsza"])
 async def prime(number: int):
